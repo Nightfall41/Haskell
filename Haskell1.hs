@@ -1,17 +1,15 @@
 module Opdracht1
     where
     
-        import Data.Colour
-
-
-
-    data Geofig = Vierkant | Driehoek | Circel | Rechthoek deriving Show
+        
     
 
+    data Geofig =   Vierkant Double Kleur
+                    | Driehoek Double Kleur
+                    | Circel Double Kleur
+                    | Rechthoek Double  Double Kleur
+                    deriving Show
 
 
-    
-
-    -- Bro https://wiki.haskell.org/Colour
-    -- deze ook goeie https://stackoverflow.com/questions/18204308/haskell-type-vs-data-constructor
+    data Kleur = Rood | Blauw | Geel | Zwart | Oranje deriving Show
 
