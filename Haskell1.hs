@@ -1,15 +1,16 @@
 module Opdracht1
     where
+    
+        import Data.Colour
 
-    type Lengte  = Double
-    type Breedte = Double
-    type Straal  = Double
 
-    data Geofig = Vierkant | Driehoek | Circel | Rechthoek
 
-    data Colour = RGB Int Int Int
+    data Geofig = Vierkant | Driehoek | Circel | Rechthoek deriving Show
+    
 
-    RGB :: Int -> Int -> Int -> Colour
+
+
+    
 
     -- Bro https://wiki.haskell.org/Colour
     -- deze ook goeie https://stackoverflow.com/questions/18204308/haskell-type-vs-data-constructor
