@@ -14,17 +14,16 @@ module Opdracht1
                   }|
                   Circel
                   {
-                      straal :: Double,
-                      kleur  :: Kleur
+                     straal :: Double,
+                     kleur  :: Kleur
                   }|
                   Rechthoek
                   {
-                      zijdeL :: Double,
-                      zijdeB :: Double,
-                      kleur  :: Kleur
+                     zijdeL :: Double,
+                     zijdeB :: Double,
+                     kleur  :: Kleur
                   }
                   deriving (Show,Eq) --deriving geeft aan wat je met de data kan doen Eq is bijv de 'permissie' dat deze data types vergeleken kunnen worden
-
 
 ---------------------------------------------------------------------
     data Kleur = Rood | Blauw | Geel | Oranje deriving (Show,Eq)
@@ -60,27 +59,27 @@ module Opdracht1
     --opdracht 5
     onlyVierkant  :: [Geofig]->[Geofig]
     onlyVierkant [] = []
-    onlyVierkant  (x:y) = if isVierkant x == True 
-                         then x:onlyVierkant y
-                         else onlyVierkant y
+    onlyVierkant  (x:xs) = if isVierkant x == True 
+                         then x:onlyVierkant xs
+                         else onlyVierkant xs
 
     onlyDriehoek  :: [Geofig]->[Geofig]
     onlyDriehoek [] = []
-    onlyDriehoek  (x:y) = if isDriehoek x == True 
-                          then x:onlyDriehoek y
-                          else onlyDriehoek y
+    onlyDriehoek  (x:xs) = if isDriehoek x == True 
+                          then x:onlyDriehoek xs
+                          else onlyDriehoek xs
 
     onlyCircel    :: [Geofig]->[Geofig]
     onlyCircel  [] = []
-    onlyCircel    (x:y) = if isCircel x == True 
-                          then x:onlyCircel y
-                          else onlyCircel y
+    onlyCircel    (x:xs) = if isCircel x == True 
+                          then x:onlyCircel xs
+                          else onlyCircel xs
 
     onlyRechthoek :: [Geofig]->[Geofig]
     onlyRechthoek [] = []
-    onlyRechthoek (x:y) = if isRechthoek x == True 
-                          then x:onlyRechthoek y
-                          else onlyRechthoek y
+    onlyRechthoek (x:xs) = if isRechthoek x == True 
+                          then x:onlyRechthoek xs
+                          else onlyRechthoek xs
                           
 ---------------------------------------------------------------------
 
@@ -94,7 +93,7 @@ module Opdracht1
                     |otherwise                                   =error "object niet gevonden in geheugen"
 
     --hulp functie opdracht 6
-    convertStringtoGeofig :: [Char]->Geofig
+    convertStringtoGeofig :: String->Geofig
     convertStringtoGeofig x
                         |x=="vierkant"    =vierkant
                         |x=="driehoek"    =driehoek
@@ -106,11 +105,29 @@ module Opdracht1
                         |x=="Rechthoek"   =rechthoek
                         |otherwise        = error "object niet gevonden in geheugen"
 ---------------------------------------------------------------------
-
+{-
     --opdracht 7
+    requestColour :: String->[Geofig]->[Geofig]
+    requestColour kleur []= []
+    requestColour kleur x
+                        |checkColour kleur == Rood   = 
+                        |checkColour kleur == Blauw  =
+                        |checkColour kleur == Oranje =
+                        |checkColour kleur == Geel   =
+-}
+    checkColour :: String->Kleur
+    checkColour x
+                |x=="rood"=Rood
+                |x=="blauw"=Blauw
+                |x=="oranje" = Oranje
+                |x=="geel" = Geel
+                |x=="Rood"=Rood
+                |x=="Blauw"=Blauw
+                |x=="Oranje" = Oranje
+                |x=="Geel" = Geel
+                |otherwise= error "Kleur niet gevonden in geheugen"                        
 
-
-
+    
 --------------------------------------------
     --hulp functies 
     isVierkant  (Vierkant  _ _)   = True
