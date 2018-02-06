@@ -55,6 +55,33 @@ module Opdracht1
                 |isRechthoek x == True = 2*((zijdeB x)+(zijdeL x))
                         where pi=3.14159265359
 
+---------------------------------------------------------------------
+
+    --opdracht 5
+    onlyVierkant  :: [Geofig]->[Geofig]
+    onlyVierkant  (x:y) = if isVierkant x == True 
+                         then x:onlyVierkant y
+                         else onlyVierkant y
+
+    onlyDriehoek  :: [Geofig]->[Geofig]
+    onlyDriehoek  (x:y) = if isDriehoek x == True 
+                          then x:onlyDriehoek y
+                          else onlyDriehoek y
+
+    onlyCircel    :: [Geofig]->[Geofig]
+    onlyCircel    (x:y) = if isCircel x == True 
+                          then x:onlyCircel y
+                          else onlyCircel y
+
+    onlyRechthoek :: [Geofig]->[Geofig]
+    onlyRechthoek (x:y) = if isRechthoek x == True 
+                          then x:onlyRechthoek y
+                          else onlyRechthoek y
+                          
+---------------------------------------------------------------------
+
+    --opdracht 6
+    requestGeofig :: String->[Geofig]->[Geofig]
 
 --------------------------------------------
     --hulp functies 
@@ -77,4 +104,3 @@ module Opdracht1
     isRechthoek (Vierkant  _ _  ) = False
     isRechthoek (Driehoek  _ _  ) = False
     isRechthoek (Circel    _ _  ) = False
-
