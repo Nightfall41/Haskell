@@ -1,7 +1,6 @@
 module Opdracht1
     where
-    
- -- opdracht 1 Geofig is het data type en bijv Vierkant is de Value Constructor
+    -- opdracht 1 Geofig is het data type en bijv Vierkant is de Value Constructor
     data Geofig = Vierkant 
                   {
                      zijde  :: Double,
@@ -24,7 +23,6 @@ module Opdracht1
                      kleur  :: Kleur
                   }
                   deriving (Show,Eq) --deriving geeft aan wat je met de data kan doen Eq is bijv de 'permissie' dat deze data types vergeleken kunnen worden
-
 ---------------------------------------------------------------------
     data Kleur = Rood | Blauw | Geel | Oranje deriving (Show,Eq)
 ---------------------------------------------------------------------
@@ -42,8 +40,6 @@ module Opdracht1
                 |isDriehoek  x == True = ((zijde x)*(zijde x))/2
                 |isRechthoek x == True = (zijdeB x)*(zijdeL x)
                         where pi=3.14159265359  
-
-
 ---------------------------------------------------------------------
     --opdracht 4
     omtrek :: Geofig->Double
@@ -53,9 +49,7 @@ module Opdracht1
                 |isDriehoek  x == True = (zijde x)*3
                 |isRechthoek x == True = 2*((zijdeB x)+(zijdeL x))
                         where pi=3.14159265359
-
 ---------------------------------------------------------------------
-
     --opdracht 5
     onlyVierkant  :: [Geofig]->[Geofig]
     onlyVierkant [] = []
@@ -80,9 +74,7 @@ module Opdracht1
     onlyRechthoek (x:xs) = if isRechthoek x == True 
                           then x:onlyRechthoek xs
                           else onlyRechthoek xs
-                          
 ---------------------------------------------------------------------
-
     --opdracht 6
     requestGeofig :: String->[Geofig]->[Geofig]
     requestGeofig soortType lijst 
@@ -105,29 +97,17 @@ module Opdracht1
                         |x=="Rechthoek"   =rechthoek
                         |otherwise        = error "object niet gevonden in geheugen"
 ---------------------------------------------------------------------
-{-
     --opdracht 7
-    requestColour :: String->[Geofig]->[Geofig]
+    requestColour :: Kleur->[Geofig]->[Geofig]
     requestColour kleur []= []
-    requestColour kleur x
-                        |checkColour kleur == Rood   = 
-                        |checkColour kleur == Blauw  =
-                        |checkColour kleur == Oranje =
-                        |checkColour kleur == Geel   =
--}
-    checkColour :: String->Kleur
-    checkColour x
-                |x=="rood"=Rood
-                |x=="blauw"=Blauw
-                |x=="oranje" = Oranje
-                |x=="geel" = Geel
-                |x=="Rood"=Rood
-                |x=="Blauw"=Blauw
-                |x=="Oranje" = Oranje
-                |x=="Geel" = Geel
-                |otherwise= error "Kleur niet gevonden in geheugen"                        
-
-    
+    requestColour kleur (x:xs) = if kleurtje x == kleur
+                                then x:requestColour kleur xs
+                                else requestColour kleur xs                    
+---------------------------------------------------------------------
+    --opdracht 8
+    requestBiggestSize :: [Geofig]->[Geofig
+    requestBiggestSize []=[]
+    requestBiggestSize 
 --------------------------------------------
     --hulp functies 
     isVierkant  (Vierkant  _ _)   = True
@@ -149,3 +129,8 @@ module Opdracht1
     isRechthoek (Vierkant  _ _  ) = False
     isRechthoek (Driehoek  _ _  ) = False
     isRechthoek (Circel    _ _  ) = False
+-------------------------------------------    
+    kleurtje  (Vierkant _ a) = a 
+    kleurtje  (Rechthoek _ _ a)=a
+    kleurtje  (Circel _ a)=a
+    kleurtje  (Driehoek _ a)=a
