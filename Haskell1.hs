@@ -105,9 +105,18 @@ module Opdracht1
                                 else requestColour kleur xs                    
 ---------------------------------------------------------------------
     --opdracht 8
-    requestBiggestSize :: [Geofig]->[Geofig
-    requestBiggestSize []=[]
-    requestBiggestSize 
+  {-  grootsteOppervlakte :: [Geofig]->Geofig
+    grootsteOppervlakte []= error "lege lijst, niet mogelijk om oppervlakte te berekenen."
+    grootsteOppervlakte (x:xs)= if oppervlakte x > oppervlakte xs
+                                then x:grootsteOppervlakte xs
+                                else grootsteOppervlakte xs 
+                                iets in deze richting -}            
+                                
+                                
+   --opdracht 9
+    addElemToList :: Geofig->[Geofig]->[Geofig]
+    addElemToList x []= x : []
+    addElemToList x y = x: y                             
 --------------------------------------------
     --hulp functies 
     isVierkant  (Vierkant  _ _)   = True
