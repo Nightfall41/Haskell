@@ -59,21 +59,25 @@ module Opdracht1
 
     --opdracht 5
     onlyVierkant  :: [Geofig]->[Geofig]
+    onlyVierkant [] = []
     onlyVierkant  (x:y) = if isVierkant x == True 
                          then x:onlyVierkant y
                          else onlyVierkant y
 
     onlyDriehoek  :: [Geofig]->[Geofig]
+    onlyDriehoek [] = []
     onlyDriehoek  (x:y) = if isDriehoek x == True 
                           then x:onlyDriehoek y
                           else onlyDriehoek y
 
     onlyCircel    :: [Geofig]->[Geofig]
+    onlyCircel  [] = []
     onlyCircel    (x:y) = if isCircel x == True 
                           then x:onlyCircel y
                           else onlyCircel y
 
     onlyRechthoek :: [Geofig]->[Geofig]
+    onlyRechthoek [] = []
     onlyRechthoek (x:y) = if isRechthoek x == True 
                           then x:onlyRechthoek y
                           else onlyRechthoek y
@@ -82,6 +86,30 @@ module Opdracht1
 
     --opdracht 6
     requestGeofig :: String->[Geofig]->[Geofig]
+    requestGeofig soortType lijst 
+                    |convertStringtoGeofig soortType == vierkant = onlyVierkant  lijst 
+                    |convertStringtoGeofig soortType == driehoek = onlyDriehoek  lijst
+                    |convertStringtoGeofig soortType == circel   = onlyCircel    lijst
+                    |convertStringtoGeofig soortType == rechthoek= onlyRechthoek lijst
+                    |otherwise                                   =error "object niet gevonden in geheugen"
+
+    --hulp functie opdracht 6
+    convertStringtoGeofig :: [Char]->Geofig
+    convertStringtoGeofig x
+                        |x=="vierkant"    =vierkant
+                        |x=="driehoek"    =driehoek
+                        |x=="circel"      =circel
+                        |x=="rechthoek"   =rechthoek
+                        |x=="Vierkant"    =vierkant
+                        |x=="Driehoek"    =driehoek
+                        |x=="Circel"      =circel
+                        |x=="Rechthoek"   =rechthoek
+                        |otherwise        = error "object niet gevonden in geheugen"
+---------------------------------------------------------------------
+
+    --opdracht 7
+
+
 
 --------------------------------------------
     --hulp functies 
