@@ -109,9 +109,9 @@ module Opdracht1
     grootsteOppervlakte []= error "Lege lijst, niet mogelijk om oppervlakte te berekenen."
     grootsteOppervlakte x = maximum (map oppervlakte x)      
                                 
-    grootsteOppervlakte :: [Geofig]->Double
-    grootsteOppervlakte []= error "Lege lijst, niet mogelijk om omtrek te berekenen."
-    grootsteOppervlakte x = maximum (map omtrek x)     
+    grootsteOmtrek      :: [Geofig]->Double
+    grootsteOmtrek      []= error "Lege lijst, niet mogelijk om omtrek te berekenen."
+    grootsteOmtrek      x = maximum (map omtrek x)     
 ---------------------------------------------------------------------                                                        
    --opdracht 9
     addElemToList :: Geofig->[Geofig]->[Geofig]
