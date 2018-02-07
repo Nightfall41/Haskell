@@ -116,7 +116,19 @@ module Opdracht1
    --opdracht 9
     addElemToList :: Geofig->[Geofig]->[Geofig]
     addElemToList x []= x : []
-    addElemToList x y = x: y                             
+    addElemToList x y = x : y
+    
+---------------------------------------------------------------------
+   --opdracht 10
+    percentageOppervlakte :: [Geofig]->[Double]
+    percentageOppervlakte [] = []
+    percentageOppervlakte (x:xs) =  
+                                  let totaal = sum (map oppervlakte (x:xs))
+                                  in 
+                                     ((( oppervlakte x))/totaal)*100.0 : percentageOppervlakte xs
+                                     
+
+    
 --------------------------------------------
     --hulp functies 
     isVierkant  (Vierkant  _ _)   = True
