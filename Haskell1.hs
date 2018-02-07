@@ -105,14 +105,12 @@ module Opdracht1
                                 else requestColour kleur xs                    
 ---------------------------------------------------------------------
     --opdracht 8
-  {-  grootsteOppervlakte :: [Geofig]->Geofig
+    grootsteOppervlakte :: [Geofig]->Double
     grootsteOppervlakte []= error "lege lijst, niet mogelijk om oppervlakte te berekenen."
-    grootsteOppervlakte (x:xs)= if oppervlakte x > oppervlakte xs
-                                then x:grootsteOppervlakte xs
-                                else grootsteOppervlakte xs 
-                                iets in deze richting -}            
+    grootsteOppervlakte x = maximum (map oppervlakte x)      
                                 
-                                
+    
+                                                        
    --opdracht 9
     addElemToList :: Geofig->[Geofig]->[Geofig]
     addElemToList x []= x : []
