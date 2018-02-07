@@ -82,7 +82,7 @@ module Opdracht1
                     |convertStringtoGeofig soortType == driehoek = onlyDriehoek  lijst
                     |convertStringtoGeofig soortType == circel   = onlyCircel    lijst
                     |convertStringtoGeofig soortType == rechthoek= onlyRechthoek lijst
-                    |otherwise                                   =error "object niet gevonden in geheugen"
+                    |otherwise                                   =error "Object niet gevonden in geheugen"
 
     --hulp functie opdracht 6
     convertStringtoGeofig :: String->Geofig
@@ -95,7 +95,7 @@ module Opdracht1
                         |x=="Driehoek"    =driehoek
                         |x=="Circel"      =circel
                         |x=="Rechthoek"   =rechthoek
-                        |otherwise        = error "object niet gevonden in geheugen"
+                        |otherwise        = error "Object niet gevonden in geheugen"
 ---------------------------------------------------------------------
     --opdracht 7
     requestColour :: Kleur->[Geofig]->[Geofig]
@@ -106,11 +106,13 @@ module Opdracht1
 ---------------------------------------------------------------------
     --opdracht 8
     grootsteOppervlakte :: [Geofig]->Double
-    grootsteOppervlakte []= error "lege lijst, niet mogelijk om oppervlakte te berekenen."
+    grootsteOppervlakte []= error "Lege lijst, niet mogelijk om oppervlakte te berekenen."
     grootsteOppervlakte x = maximum (map oppervlakte x)      
                                 
-    
-                                                        
+    grootsteOppervlakte :: [Geofig]->Double
+    grootsteOppervlakte []= error "Lege lijst, niet mogelijk om omtrek te berekenen."
+    grootsteOppervlakte x = maximum (map omtrek x)     
+---------------------------------------------------------------------                                                        
    --opdracht 9
     addElemToList :: Geofig->[Geofig]->[Geofig]
     addElemToList x []= x : []
