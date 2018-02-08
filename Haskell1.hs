@@ -31,6 +31,8 @@ module Opdracht1
     driehoek  = Driehoek  5.0 Rood 
     circel    = Circel    1.5 Geel 
     rechthoek = Rechthoek 4.65  5.21 Oranje 
+
+    lijst     =[circel,rechthoek,vierkant,driehoek,circel,rechthoek,vierkant,driehoek]
 ---------------------------------------------------------------------
     --opdracht 3
     oppervlakte :: Geofig->Double
@@ -125,7 +127,7 @@ module Opdracht1
     percentageOppervlakte (x:xs) =  
                                   let totaal = sum (map oppervlakte (x:xs))
                                   in 
-                                     ((( oppervlakte x))/totaal)*100.0 : percentageOppervlakte xs
+                                     (((oppervlakte x))/totaal)*100.0 : percentageOppervlakte xs
                                      
 
     
