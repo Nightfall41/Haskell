@@ -7,14 +7,16 @@ module Opdracht2
     -- opdracht 1&2
     data Boek = Boek
                 {
-                    prijs  :: Float,
+                     prijs  :: Float,
                     titel  :: String,
                     auteur :: String
                 } deriving (Show,Eq,Ord)
-    
-    data Box x = Leeg
-                | Gevuld x
-                deriving (Show)
+    --opdracht 4 en 6
+    data Box x = Leeg | Gevuld x
+                deriving (Show,Functor)
+
+    data Zak x = Leeg | Vol x
+                 deriving (Show,Functor)
 
 
     -- opdracht 3
@@ -28,14 +30,24 @@ module Opdracht2
 
     isEqual :: Boek->Boek->Bool
     isEqual a b = a==b
-
+    
     sortBoek :: [Boek]->[Boek]
     sortBoek = sortBy (comparing titel) 
 
+    --opdracht 5
     placeBoekInBox :: [Boek]->(Box [Boek])  
     placeBoekInBox x = Gevuld x 
 
     extractBoekFrombox :: (Box [Boek])->[Boek]
-     
+    extractBoekFrombox x = insideBox x 
 
+
+    -- Zoek uit wat Functor is en hoe het exact werkt
+    -- fmap :: (a->b)->a->b
+    
+---------------------------------------
+--Hulpfunctie
+    insideBox (Gevuld x)=x
+
+    
 
