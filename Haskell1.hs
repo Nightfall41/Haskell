@@ -31,7 +31,6 @@ module Opdracht1
     driehoek  = Driehoek  5.0 Rood 
     circel    = Circel    1.5 Geel 
     rechthoek = Rechthoek 4.65  5.21 Oranje 
-
     lijst     =[circel,rechthoek,vierkant,driehoek,circel,rechthoek,vierkant,driehoek]
 ---------------------------------------------------------------------
     --opdracht 3
@@ -102,7 +101,7 @@ module Opdracht1
     --opdracht 7
     requestColour :: Kleur->[Geofig]->[Geofig]
     requestColour kleur []= []
-    requestColour kleur (x:xs) = if kleurtje x == kleur
+    requestColour kleur (x:xs) =if kleurtje x == kleur
                                 then x:requestColour kleur xs
                                 else requestColour kleur xs                    
 ---------------------------------------------------------------------
@@ -119,18 +118,13 @@ module Opdracht1
     addElemToList :: Geofig->[Geofig]->[Geofig]
     addElemToList x []= x : []
     addElemToList x y = x : y
-    
 ---------------------------------------------------------------------
    --opdracht 10
     percentageOppervlakte :: [Geofig]->[Double]
     percentageOppervlakte [] = []
     percentageOppervlakte (x:xs) =  
                                   let totaal = sum (map oppervlakte (x:xs))
-                                  in 
-                                     (((oppervlakte x))/totaal)*100.0 : percentageOppervlakte xs
-                                     
-
-    
+                                  in  (((oppervlakte x))/totaal)*100.0 : percentageOppervlakte xs
 --------------------------------------------
     --hulp functies 
     isVierkant  (Vierkant  _ _)   = True

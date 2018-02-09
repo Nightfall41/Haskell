@@ -2,6 +2,7 @@ module Opdracht2
     where
 
     import Data.List
+    import Data.Ord
 
     -- opdracht 1&2
     data Boek = Boek
@@ -10,6 +11,11 @@ module Opdracht2
                     titel  :: String,
                     auteur :: String
                 } deriving (Show,Eq,Ord)
+    
+    data Box x = Leeg
+                | Gevuld x
+                deriving (Show)
+
 
     -- opdracht 3
     java   = Boek 20.00 "Learn Java" "Schaum"
@@ -18,11 +24,18 @@ module Opdracht2
     sql    = Boek 14.99 "Databases" "Some Asian Dude"
     google = Boek 60.00 "Google, everything you need" "internet"
 
-    lijst  = [java,scrum,haskell,sql,google]
+    list  = [java,scrum,haskell,google,sql]
 
     isEqual :: Boek->Boek->Bool
     isEqual a b = a==b
 
     sortBoek :: [Boek]->[Boek]
-    sortBoek [] =[]
-    --sortBoek (x:xs) = sort 
+    sortBoek = sortBy (comparing titel) 
+
+    placeBoekInBox :: [Boek]->(Box [Boek])  
+    placeBoekInBox x = Gevuld x 
+
+    extractBoekFrombox :: (Box [Boek])->[Boek]
+     
+
+
