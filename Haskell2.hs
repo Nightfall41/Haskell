@@ -7,18 +7,26 @@ module Opdracht2
     -- opdracht 1&2
     data Boek = Boek
                 {
-                     prijs  :: Float,
+                    prijs  :: Float,
                     titel  :: String,
                     auteur :: String
                 } deriving (Show,Eq,Ord)
     --opdracht 4 en 6
-    data Box x = Leeg | Gevuld x
-                deriving (Show,Functor)
+    data Box x = GeenInhoud | Gevuld x
+                deriving Show
 
-    data Zak x = Leeg | Vol x
-                 deriving (Show,Functor)
+    data Zak x = Leeg | Vol x 
+                deriving Show
 
-
+    instance Functor Box where  
+            fmap f (Gevuld x) = Gevuld (f x)
+            fmap f GeenInhoud = GeenInhoud
+    
+    instance Functor Zak where
+            fmap f (Vol x)    = Vol (f x)
+            fmap f Leeg       = Leeg        
+            
+            
     -- opdracht 3
     java   = Boek 20.00 "Learn Java" "Schaum"
     scrum  = Boek 4.99  "Scrum for dummies" "Dummies"
@@ -44,6 +52,7 @@ module Opdracht2
 
     -- Zoek uit wat Functor is en hoe het exact werkt
     -- fmap :: (a->b)->a->b
+    --http://learnyouahaskell.com/making-our-own-types-and-typeclasses
     
 ---------------------------------------
 --Hulpfunctie
