@@ -19,14 +19,23 @@ module Opdracht2
 
     data Zak x = Leeg | Vol x 
                 deriving Show
-    -- instantie van de Functor, voor Box als Zak 
+
+    data List x = Hol | Hoofd x (List x)
+                deriving (Show,Eq,Ord)
+
+    -- instantie van de Functor, voor Box ,Zak en List 
     instance Functor Box where  
             fmap f (Gevuld x) = Gevuld (f x)
             fmap f GeenInhoud = GeenInhoud
     
     instance Functor Zak where
             fmap f (Vol x)    = Vol (f x)
-            fmap f Leeg       = Leeg        
+            fmap f Leeg       = Leeg
+    instance Functor List where 
+            fmap f (Hoofd x (Hoofd x)) = Hoofd (f x) Hoofd(f x)
+            fmap f Hol               = Hol     
+            fmap f Hoofd x (Hol)     = Hoofd (f x)  
+
 ----------------------------------------------------------------------------            
             
     -- opdracht 3
