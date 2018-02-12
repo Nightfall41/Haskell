@@ -1,6 +1,6 @@
 module Opdracht2
     where
-
+    
     import Data.List
     import Data.Ord
 
@@ -19,7 +19,7 @@ module Opdracht2
 
     data Zak x = Leeg | Vol x 
                 deriving Show
-
+    -- instantie van de Functor, voor Box als Zak 
     instance Functor Box where  
             fmap f (Gevuld x) = Gevuld (f x)
             fmap f GeenInhoud = GeenInhoud
@@ -58,29 +58,11 @@ module Opdracht2
     sqlZak     = Vol sql
     googleZak  = Vol google
 
-    boxesToZak :: (Zak (x))->(Box (x)) 
-    boxesToZak x = Gevuld x
-
-    {-
-        Haskell2.hs:62:27:
-    Couldn't match expected type ‘x’ with actual type ‘Zak x’
-      ‘x’ is a rigid type variable bound by
-          the type signature for boxesToZak :: Zak x -> Box x
-          at Haskell2.hs:61:19
-    Relevant bindings include
-      x :: Zak x (bound at Haskell2.hs:62:16)
-      boxesToZak :: Zak x -> Box x (bound at Haskell2.hs:62:5)
-    In the first argument of ‘Gevuld’, namely ‘x’
-    In the expression: Gevuld x -}
-
-    
-    
-
-
-
-    -- Zoek uit wat Functor is en hoe het exact werkt
-    -- fmap :: (a->b)->a->b
-    --http://learnyouahaskell.com/making-our-own-types-and-typeclasses
+    --in deze functie kan je alles stoppen en dat alles gaat in een box
+    toBox :: (x)->(Box (x)) 
+    toBox x = Gevuld x
+    -- gebruik placeInBox methode in de GHCI
+    placeInBox x = fmap toBox x
     
 ---------------------------------------
 --Hulpfunctie
