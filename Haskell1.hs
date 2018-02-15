@@ -54,27 +54,19 @@ module Opdracht1
     --opdracht 5
     onlyVierkant  :: [Geofig]->[Geofig]
     onlyVierkant [] = []
-    onlyVierkant  (x:xs) = if isVierkant x == True 
-                         then x:onlyVierkant xs
-                         else onlyVierkant xs
+    onlyVierkant  x =  filter isVierkant x
 
     onlyDriehoek  :: [Geofig]->[Geofig]
     onlyDriehoek [] = []
-    onlyDriehoek  (x:xs) = if isDriehoek x == True 
-                          then x:onlyDriehoek xs
-                          else onlyDriehoek xs
+    onlyDriehoek  x = filter isDriehoek x
 
     onlyCircel    :: [Geofig]->[Geofig]
-    onlyCircel  [] = []
-    onlyCircel    (x:xs) = if isCircel x == True 
-                          then x:onlyCircel xs
-                          else onlyCircel xs
+    onlyCircel   [] = []
+    onlyCircel    x = filter isCircel x 
 
-    onlyRechthoek :: [Geofig]->[Geofig]
+    onlyRechthoek :: [Geofig]->[Geofig]  
     onlyRechthoek [] = []
-    onlyRechthoek (x:xs) = if isRechthoek x == True 
-                          then x:onlyRechthoek xs
-                          else onlyRechthoek xs
+    onlyRechthoek  x= filter isRechthoek x
 ---------------------------------------------------------------------
     --opdracht 6
     requestGeofig :: String->[Geofig]->[Geofig]
@@ -99,6 +91,8 @@ module Opdracht1
                         |otherwise        = error "Object niet gevonden in geheugen"
 ---------------------------------------------------------------------
     --opdracht 7
+    -- dit kan ook recursief (only methodes )
+
     requestColour :: Kleur->[Geofig]->[Geofig]
     requestColour kleur []= []
     requestColour kleur (x:xs) =if kleurtje x == kleur

@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveFunctor #-}
 module Opdracht2
     where
     
@@ -22,19 +23,6 @@ module Opdracht2
 
     data List x = Hol | Hoofd x (List x)
                 deriving (Show,Eq,Ord)
-
-    -- instantie van de Functor, voor Box ,Zak en List 
-    instance Functor Box where  
-            fmap f (Gevuld x) = Gevuld (f x)
-            fmap f GeenInhoud = GeenInhoud
-    
-    instance Functor Zak where
-            fmap f (Vol x)    = Vol (f x)
-            fmap f Leeg       = Leeg
-    instance Functor List where 
-            fmap f (Hoofd x (Hoofd x)) = Hoofd (f x) Hoofd(f x)
-            fmap f Hol               = Hol     
-            fmap f Hoofd x (Hol)     = Hoofd (f x)  
 
 ----------------------------------------------------------------------------            
             
@@ -72,6 +60,16 @@ module Opdracht2
     toBox x = Gevuld x
     -- gebruik placeInBox methode in de GHCI
     placeInBox x = fmap toBox x
+
+    push :: a -> List a -> List a
+    push a Hol = Hoofd a Hol
+    push a (Hoofd h rest) = Hoofd a (Hoofd h rest)
+    
+    pushlist :: List a -> [a] -> List a
+    pushlist Hol lijst = foldr push Hol lijst
+    pushlist (Hoofd h rest) lijst = foldr push (Hoofd h rest) lijst 
+
+    --opdracht 9
     
 ---------------------------------------
 --Hulpfunctie
