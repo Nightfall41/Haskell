@@ -1,4 +1,4 @@
-{-# LANGUAGE DeriveFunctor #-}
+--{-# LANGUAGE DeriveFunctor #-}
 module Opdracht2
     where
     
@@ -24,6 +24,18 @@ module Opdracht2
     data List x = Hol | Hoofd x (List x)
                 deriving (Show,Eq,Ord)
 
+
+    instance Functor List where
+                fmap f Hol = Hol
+                fmap f (Hoofd x rest) = Hoofd (f x) (fmap f rest)
+
+    instance Functor Box where  
+                fmap f (Gevuld x) = Gevuld (f x)
+                fmap f GeenInhoud = GeenInhoud
+
+    instance Functor Zak where
+                fmap f (Vol x)    = Vol (f x)
+                fmap f Leeg       = Leeg
 ----------------------------------------------------------------------------            
             
     -- opdracht 3
@@ -35,6 +47,8 @@ module Opdracht2
 
     list       = [java,scrum,haskell,google,sql]
     
+    
+    
     isEqual :: Boek->Boek->Bool
     isEqual a b = a==b
     
@@ -45,8 +59,8 @@ module Opdracht2
     placeBoekInBox :: [Boek]->(Box [Boek])  
     placeBoekInBox x = Gevuld x 
 
-    extractBoekFrombox :: (Box [Boek])->[Boek]
-    extractBoekFrombox x = insideBox x 
+    extractFrombox :: (Box [Boek])->[Boek]
+    extractFrombox x =  insideBox x 
 ----------------------------------------------------------------------------
     -- opdracht 8
     javaZak    = Vol java
@@ -61,6 +75,7 @@ module Opdracht2
     -- gebruik placeInBox methode in de GHCI
     placeInBox x = fmap toBox x
 
+    --opdracht 9
     push :: a -> List a -> List a
     push a Hol = Hoofd a Hol
     push a (Hoofd h rest) = Hoofd a (Hoofd h rest)
@@ -69,11 +84,17 @@ module Opdracht2
     pushlist Hol lijst = foldr push Hol lijst
     pushlist (Hoofd h rest) lijst = foldr push (Hoofd h rest) lijst 
 
-    --opdracht 9
+    
+    listWithBoxes = foldr (Hoofd) Hol ( placeInBox [1..10])
+
+
+
+
+
     
 ---------------------------------------
 --Hulpfunctie
-    insideBox (Gevuld x)=x
+    insideBox (Gevuld x) = x
 
     
 
