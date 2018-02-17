@@ -86,6 +86,7 @@ module Opdracht2
 
     
     listWithBoxes = foldr (Hoofd) Hol ( placeInBox [1..10])
+    listWithZak   = fmap Vol (listWithBoxes)
 
 
 
