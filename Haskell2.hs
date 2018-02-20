@@ -1,4 +1,3 @@
---{-# LANGUAGE DeriveFunctor #-}
 module Opdracht2
     where
     
@@ -69,6 +68,9 @@ module Opdracht2
     sqlZak     = Vol sql
     googleZak  = Vol google
 
+    --placeInZak :: Boek->Zak x
+    --placeInZak x = Vol x
+
     --in deze functie kan je alles stoppen en dat alles gaat in een box
     toBox :: (x)->(Box (x)) 
     toBox x = Gevuld x
@@ -84,15 +86,9 @@ module Opdracht2
     pushlist Hol lijst = foldr push Hol lijst
     pushlist (Hoofd h rest) lijst = foldr push (Hoofd h rest) lijst 
 
-    
-    listWithBoxes = foldr (Hoofd) Hol ( placeInBox [1..10])
+    listWithBoxes = foldr (Hoofd) Hol (placeInBox [1..10])
     listWithZak   = fmap Vol (listWithBoxes)
-
-
-
-
-
-    
+    listWithZakBox = foldr (Hoofd) Hol ([fmap Vol (fmap insideBox listWithBoxes)])  
 ---------------------------------------
 --Hulpfunctie
     insideBox (Gevuld x) = x
