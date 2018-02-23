@@ -13,4 +13,7 @@ module Encrypt
                 fmap Just content
                 hClose bestand
             
+
+            --adit.io monad in pictures
+            --do learn you a haskell
             

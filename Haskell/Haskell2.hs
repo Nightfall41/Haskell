@@ -58,7 +58,7 @@ module Opdracht2
     placeBoekInBox :: [Boek]->(Box [Boek])  
     placeBoekInBox x = Gevuld x 
 
-    extractFrombox :: (Box [Boek])->[Boek]    
+    extractFrombox :: (Box [Boek])->[Boek]
     extractFrombox x =  insideBox x 
 ----------------------------------------------------------------------------
     -- opdracht 8
@@ -68,6 +68,8 @@ module Opdracht2
     sqlZak     = Vol sql
     googleZak  = Vol google
 
+    --placeInZak :: Boek->Zak x
+    --placeInZak x = Vol x
 
     --in deze functie kan je alles stoppen en dat alles gaat in een box
     toBox :: (x)->(Box (x)) 
@@ -84,7 +86,6 @@ module Opdracht2
     pushlist Hol lijst = foldr push Hol lijst
     pushlist (Hoofd h rest) lijst = foldr push (Hoofd h rest) lijst 
 
-    
     listWithBoxes = foldr (Hoofd) Hol (placeInBox [1..10])
     listWithZak   = fmap Vol (listWithBoxes)
     listWithZakBox = foldr (Hoofd) Hol ([fmap Vol (fmap insideBox listWithBoxes)])  
