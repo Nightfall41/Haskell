@@ -1,6 +1,7 @@
 module Opdracht2
     where
     
+        
     import Data.List
     import Data.Ord
 
