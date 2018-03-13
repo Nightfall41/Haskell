@@ -3,17 +3,27 @@ module Encrypt
         where
 
             import System.IO
+            import System.Random
+            import Control.Monad
+            import Data.Function
+            import Data.Bits
             import Data.Char
 
 
+            main = do
+                content <- readFile "bestand.txt"
+                gen <- newStdGen
+                let randomKeyGen = take (length content) (randomRs ('a','z') gen)
+                let cipher = stringXor content randomKeyGen
+                writeFile "sleutel.key" randomKeyGen
+                writeFile "bestand.txt" cipher
+                return(cipher)
 
-            readFromFile = do
-                bestand <- openFile "bestand.txt" ReadMode
-                content <- hGetContents bestand
-                fmap Just content
-                hClose bestand
-            
+
+            stringXor :: String -> String -> String
+            stringXor = zipWith (fmap chr . xor) `on` map ord
 
             --adit.io monad in pictures
             --do learn you a haskell
             
+

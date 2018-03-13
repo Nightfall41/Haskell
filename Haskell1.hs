@@ -75,7 +75,7 @@ module Opdracht1
                     |convertStringtoGeofig soortType == driehoek = onlyDriehoek  lijst
                     |convertStringtoGeofig soortType == circel   = onlyCircel    lijst
                     |convertStringtoGeofig soortType == rechthoek= onlyRechthoek lijst
-                    |otherwise                                   =error "Object niet gevonden in geheugen"
+                    |otherwise                                   = error "Object niet gevonden in geheugen"
 
     --hulp functie opdracht 6
     convertStringtoGeofig :: String->Geofig
