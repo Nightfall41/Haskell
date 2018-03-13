@@ -9,11 +9,10 @@ module Decrypt
         import Data.Char
 
         main = do
-            cipher <- readFile "bestand.txt"
+            cipher <- readFile "cipher.txt"
             key    <- readFile "sleutel.key"
             let decryptedFile = stringXor key cipher
-            writeFile "bestand.txt" decryptedFile
-            writeFile "sleutel.key" ("deze sleutel is verouderd")
+            writeFile "decryptedContent.txt" decryptedFile
             return(decryptedFile)
 
 

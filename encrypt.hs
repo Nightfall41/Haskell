@@ -16,7 +16,7 @@ module Encrypt
                 let randomKeyGen = take (length content) (randomRs ('a','z') gen)
                 let cipher = stringXor content randomKeyGen
                 writeFile "sleutel.key" randomKeyGen
-                writeFile "bestand.txt" cipher
+                writeFile "cipher.txt" cipher
                 return(cipher)
 
 
