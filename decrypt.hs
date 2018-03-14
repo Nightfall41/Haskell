@@ -15,7 +15,6 @@ module Decrypt
             writeFile "decryptedContent.txt" decryptedFile
             return(decryptedFile)
 
-
         stringXor :: String -> String -> String
         stringXor = zipWith (fmap chr . xor) `on` map ord
 
